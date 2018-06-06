@@ -9,7 +9,6 @@ def base_info(request):
     :param request:
     :return:
     """
-    ####
     if request.method == 'GET':
         username = request.session.get('username')
         email = request.session.get('email')
