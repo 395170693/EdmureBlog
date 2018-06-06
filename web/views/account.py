@@ -91,7 +91,7 @@ def register(request):
             request.session['email'] = request.POST.get('email')
             models.UserInfo.objects.create(username=request.POST.get('username'),
                                            email=request.POST.get('email'),
-                                           password=request.POST.get('email')
+                                           password=request.POST.get('password')
                                            )
         else:
             ret['error'] = register_obj.errors.as_json()

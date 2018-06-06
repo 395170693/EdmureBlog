@@ -12,7 +12,7 @@ def base_info(request):
     if request.method == 'GET':
         username = request.session.get('username')
         email = request.session.get('email')
-        #print('2222222222222222222222222222222222222222')
+        print('2222222222222222222222222222222222222222')
         return render(request, 'backend_base_info.html',{'username':username,'email':email})
     if request.method == 'POST':
         print("111111111111111111111111111111111111111111111111111")
