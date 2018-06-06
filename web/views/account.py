@@ -31,6 +31,7 @@ def login(request):
     if request.method == 'GET':
         print('11111111111111111111111111111111111')
         return render(request, 'login.html')
+        #pass
     elif request.method == 'POST':
         print('22222222222222222222222222222222222222')
         result = {'status': False, 'message': None, 'data': None}

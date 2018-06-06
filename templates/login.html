@@ -35,7 +35,8 @@
                     <input type="text" class="form-control" name="check_code" id="check_code" placeholder="请输入验证码">
                 </div>
                 <div class="col-xs-5">
-                    <img id="check_code_img" src="/check_code.html">
+                    <!-- <img  onclick="changeCheckCode(this);" src="/check_code.html"> -->
+                    <img id="check_code_img" src="/check_code.html" onclick="changeCheckCode(this);">
                 </div>
             </div>
 
@@ -63,8 +64,11 @@
             </div>
         </div>
     </form>
+    </div>
+</body>
     <script src="/static/js/jquery-1.12.4.js"></script>
     <script type="text/javascript">
+
         $(function () {
             bindLogin();
         });
@@ -92,7 +96,10 @@
 
             })
         }
+    function changeCheckCode(ths){
+            ths.src = ths.src +  '?';
+
+        }
     </script>
-</div>
-</body>
+
 </html>

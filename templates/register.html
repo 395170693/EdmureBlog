@@ -49,7 +49,7 @@
                     <p id="error_check_code"></p>
                 </div>
                 <div class="col-xs-5">
-                    <img src="/check_code.html">
+                    <img src="/check_code.html" onclick="changeCheckCode(this);">
                 </div>
             </div>
             <p id="show_error"></p>
@@ -63,6 +63,10 @@
 <script src="/static/js/jquery-1.12.4.js"></script>
 <script src="/static/js/jquery.cookie.js"></script>
 <script>
+function changeCheckCode(ths){
+      ths.src = ths.src +  '?';
+
+}
 $("#register_a").click(
         function(){
             $.ajax({
