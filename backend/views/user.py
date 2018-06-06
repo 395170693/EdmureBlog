@@ -14,14 +14,15 @@ def base_info(request):
         email = request.session.get('email')
         print('2222222222222222222222222222222222222222')
         return render(request, 'backend_base_info.html',{'username':username,'email':email})
-    if request.method == 'POST':
+    elif request.method == 'POST':
         print("111111111111111111111111111111111111111111111111111")
         nickname = request.POST.get('nickname')
         blogUrl = request.POST.get('blogUrl')
         blogTheme = request.POST.get('blogTheme')
         blogTitle = request.POST.get('blogTitle')
         data = models.UserInfo.objects.filter(username=request.session.get('username'))
-        data.update(nickname=nickname)
+        data.update(nickname=nickname,)
+        return render(request,'login.html')
         # data.fans
 def tag(request):
     """
