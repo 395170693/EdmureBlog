@@ -104,15 +104,36 @@
 
                 </div>
             </form>
+             <!--
+        <form id="form1" action="/upload_file/" method="POST" enctype="multipart/form-data" target="ifm1">
+        <iframe id="ifm1" name="ifm1" style="display: none;"></iframe>
+        <input type="file" name="fafafa" onchange="changeUpalod();" />
+            </form>   -->
+
             <div style="position: absolute;" class="col-xs-offset-7 col-xs-5">
                 <div class="avatar-container">
-                    <img origin="/static/imgs/avatar/default.png" src="/static/imgs/avatar/default.png">
+                    <img id="preview" origin="/static/imgs/avatar/default.png" src="/static/imgs/avatar/default.png">
                     <div class="text">点击图片更换(<a href="#">撤销</a>)</div>
-                    <input id="avatarImg" type="file" class="img-file" />
+                    <input id="avatarImg" type="file" class="img-file" onchange="changeUpalod();"/>
                 </div>
             </div>
         </div>
     </div>
+        <script src="/static/jquery-1.12.4.js"></script>
+    <script>
+        function changeUpalod(){
+            $('#ifm1').load(function(){
+                var text = $('#ifm1').contents().find('body').text();
+                var obj = JSON.parse(text);
+
+                $('#preview').empty();
+                var imgTag = document.createElement('img');
+                imgTag.src = "/" + obj.data;
+                $('#preview').append(imgTag);
+            });
+            $('#form1').submit();
+        }
+    </script>
 {% endblock %}
 
 {% block js %}
