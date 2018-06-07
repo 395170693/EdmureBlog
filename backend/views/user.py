@@ -2,6 +2,21 @@
 # -*- coding:utf-8 -*-
 from django.shortcuts import render
 from repository import models
+from django.shortcuts import HttpResponse
+
+def upload_file(request):
+    print('form111111111111111111111111111111111111')
+    username = request.POST.get('username')
+    fafafa = request.FILES.get('fafafa')
+    import os
+    img_path = os.path.join('static/imgs/avatar/',fafafa.name)
+    with open(img_path,'wb') as f:
+        for item in fafafa.chunks():
+            f.write(item)
+
+    ret = {'code': True , 'data': img_path}
+    import json
+    return HttpResponse(json.dumps(ret))
 
 def base_info(request):
     """

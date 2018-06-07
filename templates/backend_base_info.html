@@ -104,11 +104,6 @@
 
                 </div>
             </form>
-             <!--
-        <form id="form1" action="/upload_file/" method="POST" enctype="multipart/form-data" target="ifm1">
-        <iframe id="ifm1" name="ifm1" style="display: none;"></iframe>
-        <input type="file" name="fafafa" onchange="changeUpalod();" />
-            </form>   -->
 
             <div style="position: absolute;" class="col-xs-offset-7 col-xs-5">
                 <div class="avatar-container">
@@ -118,7 +113,15 @@
                 </div>
             </div>
         </div>
+
+
     </div>
+    <form id="form1" action="/backend/upload_file" method="POST" enctype="multipart/form-data" target="ifm1">
+            {% csrf_token %}
+        <iframe id="ifm1" name="ifm1" style="display: none;"></iframe>
+        <input type="file" name="fafafa" onchange="changeUpalod();" />
+{#            <input type="submit" onclick="iframeSubmit();" value="Form提交"/>#}
+    </form>
         <script src="/static/jquery-1.12.4.js"></script>
     <script>
         function changeUpalod(){
@@ -133,6 +136,7 @@
             });
             $('#form1').submit();
         }
+
     </script>
 {% endblock %}
 

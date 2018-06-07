@@ -4,6 +4,7 @@ from .views import user
 
 urlpatterns = [
     url(r'^base-info.html$', user.base_info,name='base_info'),
+    url(r'^upload_file$', user.upload_file),
     url(r'^tag.html$', user.tag),
     url(r'^category.html$', user.category),
     url(r'^article.html$', user.article),
