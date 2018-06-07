@@ -108,31 +108,35 @@
             <div style="position: absolute;" class="col-xs-offset-7 col-xs-5">
                 <div class="avatar-container">
                     <img id="preview" origin="/static/imgs/avatar/default.png" src="/static/imgs/avatar/default.png">
+                    <form id="form1" action="/upload_file" method="post" enctype="multipart/form-data" target="ifm1">
+                        {% csrf_token %}
                     <div class="text">点击图片更换(<a href="#">撤销</a>)</div>
-                    <input id="avatarImg" type="file" class="img-file" onchange="changeUpalod();"/>
+                        <iframe id="ifm1" name="ifm1" style="display: none;"></iframe>
+                    <input id="avatarImg" type="file" name="fafafa" class="img-file" onchange="changeUpalod();"/>
+                    </form>
+
                 </div>
             </div>
         </div>
 
 
     </div>
-    <form id="form1" action="/backend/upload_file" method="POST" enctype="multipart/form-data" target="ifm1">
-            {% csrf_token %}
-        <iframe id="ifm1" name="ifm1" style="display: none;"></iframe>
-        <input type="file" name="fafafa" onchange="changeUpalod();" />
+
 {#            <input type="submit" onclick="iframeSubmit();" value="Form提交"/>#}
-    </form>
-        <script src="/static/jquery-1.12.4.js"></script>
+
+    <div id="preview2"></div>
+        <script src="/static/js/jquery-1.12.4.js"></script>
     <script>
         function changeUpalod(){
             $('#ifm1').load(function(){
                 var text = $('#ifm1').contents().find('body').text();
                 var obj = JSON.parse(text);
 
-                $('#preview').empty();
-                var imgTag = document.createElement('img');
-                imgTag.src = "/" + obj.data;
-                $('#preview').append(imgTag);
+                //$('#preview').empty();
+                //var imgTag = document.createElement('img');
+                var newsrc = "/" + obj.data;
+                $('#preview').attr('src',newsrc);
+               //$('#preview').append(imgTag);
             });
             $('#form1').submit();
         }

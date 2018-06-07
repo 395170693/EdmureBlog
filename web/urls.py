@@ -19,6 +19,7 @@ from .views import account
 
 urlpatterns = [
     url(r'^login.html$', account.login),
+    url(r'^upload_file$', account.upload_file),
     url(r'^register.html$', account.register,name='register'),
     url(r'^check_code.html$', account.check_code),
     url(r'^(?P<site>\w+).html', home.home),

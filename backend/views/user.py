@@ -4,19 +4,7 @@ from django.shortcuts import render
 from repository import models
 from django.shortcuts import HttpResponse
 
-def upload_file(request):
-    print('form111111111111111111111111111111111111')
-    username = request.POST.get('username')
-    fafafa = request.FILES.get('fafafa')
-    import os
-    img_path = os.path.join('static/imgs/avatar/',fafafa.name)
-    with open(img_path,'wb') as f:
-        for item in fafafa.chunks():
-            f.write(item)
 
-    ret = {'code': True , 'data': img_path}
-    import json
-    return HttpResponse(json.dumps(ret))
 
 def base_info(request):
     """
@@ -27,10 +15,8 @@ def base_info(request):
     if request.method == 'GET':
         username = request.session.get('username')
         email = request.session.get('email')
-        print('2222222222222222222222222222222222222222')
         return render(request, 'backend_base_info.html',{'username':username,'email':email})
     elif request.method == 'POST':
-        print("111111111111111111111111111111111111111111111111111")
         nickname = request.POST.get('nickname')
         blogUrl = request.POST.get('blogUrl')
         blogTheme = request.POST.get('blogTheme')
@@ -83,16 +69,5 @@ def edit_article(request):
     """
     return render(request, 'backend_edit_article.html')
 
-def upload_file(request):
-    username = request.POST.get('username')
-    fafafa = request.FILES.get('fafafa')
-    import os
-    img_path = os.path.join('static/imgs/',fafafa.name)
-    with open(img_path,'wb') as f:
-        for item in fafafa.chunks():
-            f.write(item)
 
-    ret = {'code': True , 'data': img_path}
-    import json
-    return HttpResponse(json.dumps(ret))
 
