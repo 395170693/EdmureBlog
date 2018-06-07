@@ -149,6 +149,8 @@ def upload_file(request):
     fafafa = request.FILES.get('fafafa')
     import os
     img_path = os.path.join('static/imgs/avatar/',fafafa.name)
+
+    request.session['avatar'] = "/%s" %  (img_path)
     with open(img_path,'wb') as f:
         for item in fafafa.chunks():
             f.write(item)

@@ -22,7 +22,7 @@ def base_info(request):
         blogTheme = request.POST.get('blogTheme')
         blogTitle = request.POST.get('blogTitle')
         data = models.UserInfo.objects.filter(username=request.session.get('username'))
-        data.update(nickname=nickname,)
+        data.update(nickname=nickname,avatar=request.session.get('avatar'))
         return render(request,'login.html')
         # data.fans
 def tag(request):
